@@ -1,0 +1,31 @@
+language: generic
+
+sudo: required
+
+services:
+    - docker
+
+before_script:
+    # build images
+    - ./scripts/build-ce-images.sh
+    - ./scripts/build-ee-images.sh $NEXUS_USERNAME $NEXUS_PASSWORD
+    - docker images
+
+script:
+    # test images
+    - ./scripts/test-ce-images.sh
+    - ./scripts/test-ee-images.sh
+
+after_success:
+    # tag images
+    - ./scripts/tag-ce-images.sh
+    - ./scripts/tag-ee-images.sh
+    - docker images
+
+    # login into docker hub and private registry
+    - docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+    - docker login -e $PRIVATE_EMAIL -u $PRIVATE_USERNAME -p $PRIVATE_PASSWORD registry.camunda.com
+
+    # push images
+    - ./scripts/push-ce-images.sh
+    - ./scripts/push-ee-images.sh
