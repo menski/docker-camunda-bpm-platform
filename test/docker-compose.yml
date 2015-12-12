@@ -1,0 +1,280 @@
+### Tomcat
+
+tomcat:
+    image: local/camunda-bpm-platform:tomcat-SNAPSHOT
+    environment:
+        - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom
+    ports:
+        - "8080:8080"
+
+tomcat-mysql:
+    extends:
+        service: tomcat
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+tomcat-postgresql:
+    extends:
+        service: tomcat
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### Tomcat EE
+
+tomcat-ee:
+    extends:
+        service: tomcat
+    image: local/camunda-bpm-platform:tomcat-SNAPSHOT-ee
+
+tomcat-ee-mysql:
+    extends:
+        service: tomcat-ee
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+tomcat-ee-postgresql:
+    extends:
+        service: tomcat-ee
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### JBoss
+
+jboss:
+    image: local/camunda-bpm-platform:jboss-SNAPSHOT
+    environment:
+        - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom
+    ports:
+        - "8080:8080"
+
+jboss-mysql:
+    extends:
+        service: jboss
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+jboss-postgresql:
+    extends:
+        service: jboss
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### JBoss EE
+
+jboss-ee:
+    extends:
+        service: jboss
+    image: local/camunda-bpm-platform:jboss-SNAPSHOT-ee
+
+jboss-ee-mysql:
+    extends:
+        service: jboss-ee
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+jboss-ee-postgresql:
+    extends:
+        service: jboss-ee
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### WildFly
+
+wildfly:
+    image: local/camunda-bpm-platform:wildfly-SNAPSHOT
+    environment:
+        - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom
+    ports:
+        - "8080:8080"
+
+wildfly-mysql:
+    extends:
+        service: wildfly
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+wildfly-postgresql:
+    extends:
+        service: wildfly
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### WildFly EE
+
+wildfly-ee:
+    extends:
+        service: wildfly
+    image: local/camunda-bpm-platform:wildfly-SNAPSHOT-ee
+
+wildfly-ee-mysql:
+    extends:
+        service: wildfly-ee
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+wildfly-ee-postgresql:
+    extends:
+        service: wildfly-ee
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### GlassFish
+
+glassfish:
+    image: local/camunda-bpm-platform:glassfish-SNAPSHOT
+    environment:
+        - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom
+    ports:
+        - "8080:8080"
+
+glassfish-mysql:
+    extends:
+        service: glassfish
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+glassfish-postgresql:
+    extends:
+        service: glassfish
+    environment:
+        - DB_DRIVER=org.postgresql.ds.PGSimpleDataSource
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### GlassFish EE
+
+glassfish-ee:
+    extends:
+        service: glassfish
+    image: local/camunda-bpm-platform:glassfish-SNAPSHOT-ee
+
+glassfish-ee-mysql:
+    extends:
+        service: glassfish-ee
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+glassfish-ee-postgresql:
+    extends:
+        service: glassfish-ee
+    environment:
+        - DB_DRIVER=org.postgresql.ds.PGSimpleDataSource
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+
+### Databases
+
+mysql:
+    image: mysql:5.6
+    environment:
+        - MYSQL_ROOT_PASSWORD=camunda
+        - MYSQL_USER=camunda
+        - MYSQL_PASSWORD=camunda
+        - MYSQL_DATABASE=process-engine
+
+postgresql:
+    image: postgres:9.3
+    environment:
+        - POSTGRES_USER=camunda
+        - POSTGRES_PASSWORD=camunda
+        - POSTGRES_DB=process-engine
