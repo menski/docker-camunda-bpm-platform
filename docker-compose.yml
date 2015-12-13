@@ -1,7 +1,7 @@
 ### Tomcat
 
 tomcat:
-    image: menski/camunda-bpm-platform:tomcat-7.3.0
+    image: registry.camunda.com/camunda-bpm-platform:tomcat-7.3.1-ee
     ports:
         - "8080:8080"
 
@@ -33,7 +33,7 @@ tomcat-postgresql:
 ### JBoss
 
 jboss:
-    image: menski/camunda-bpm-platform:jboss-7.3.0
+    image: registry.camunda.com/camunda-bpm-platform:jboss-7.3.1-ee
     ports:
         - "8080:8080"
 
@@ -65,7 +65,7 @@ jboss-postgresql:
 ### WildFly
 
 wildfly:
-    image: menski/camunda-bpm-platform:wildfly-7.3.0
+    image: registry.camunda.com/camunda-bpm-platform:wildfly-7.3.1-ee
     ports:
         - "8080:8080"
 
@@ -97,7 +97,7 @@ wildfly-postgresql:
 ### GlassFish
 
 glassfish:
-    image: menski/camunda-bpm-platform:glassfish-7.3.0
+    image: registry.camunda.com/camunda-bpm-platform:glassfish-7.3.1-ee
     ports:
         - "8080:8080"
 

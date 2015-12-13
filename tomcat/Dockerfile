@@ -36,7 +36,7 @@ ARG NEXUS=https://app.camunda.com/nexus/service/local/artifact/maven/content
 ARG REPOSITORY=public
 ARG GROUP=org.camunda.bpm.tomcat
 ARG ARTIFACT=camunda-bpm-tomcat
-ARG VERSION=7.3.0
+ARG VERSION=7.3.1
 
 # install camunda
 ADD install-camunda.sh /bin/
