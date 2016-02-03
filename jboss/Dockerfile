@@ -40,7 +40,7 @@ ARG NEXUS=https://app.camunda.com/nexus/service/local/artifact/maven/content
 ARG REPOSITORY=public
 ARG GROUP=org.camunda.bpm.jboss
 ARG ARTIFACT=camunda-bpm-jboss
-ARG VERSION=7.3.3
+ARG VERSION=7.4.2
 
 # install camunda
 ADD install-camunda.sh /bin/

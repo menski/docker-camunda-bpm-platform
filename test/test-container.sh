@@ -24,7 +24,7 @@ function wait_for_engine_created {
 
     echo -n "create: Grep log for process engine created message"
     for retry in $(seq $retries); do
-        docker logs $CONTAINER 2>&1 | grep -q "ProcessEngine default created" && \
+        docker logs $CONTAINER 2>&1 | grep -q "Process Engine default created" && \
             echo -e "\033[2K\rcreate: Process engine default sucessfully created ($retry/$retries)" && return 0
         if [ $retry -lt $retries ]; then
             echo -en "\033[2K\rcreate: Process engine default not created wait for $wait_time seconds and retry ($retry/$retries)"
