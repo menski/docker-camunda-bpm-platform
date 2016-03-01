@@ -36,7 +36,7 @@ ARG NEXUS=https://app.camunda.com/nexus/service/local/artifact/maven/content
 ARG REPOSITORY=public
 ARG GROUP=org.camunda.bpm.glassfish
 ARG ARTIFACT=camunda-bpm-glassfish
-ARG VERSION=7.4.2
+ARG VERSION=7.4.3
 
 # install camunda
 ADD install-camunda.sh /bin/
