@@ -2,7 +2,7 @@
 
 set -e
 
-SERVERS=${1:-tomcat jboss wildfly glassfish}
+SERVERS=${1:-tomcat jboss wildfly wildfly10 glassfish}
 
 REPO="registry.camunda.com"
 IMAGE="$REPO/camunda-bpm-platform"

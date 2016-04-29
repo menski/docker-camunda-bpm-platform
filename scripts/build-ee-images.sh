@@ -4,7 +4,7 @@ set -e
 
 USERNAME=${1:?"Usage: $0 USERNAME PASSWORD"}
 PASSWORD=${2:?"Usage: $0 USERNAME PASSWORD"}
-SERVERS=${3:-tomcat jboss wildfly glassfish}
+SERVERS=${3:-tomcat jboss wildfly wildfly10 glassfish}
 
 function clean_up {
     local rc=$?

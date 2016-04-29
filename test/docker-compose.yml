@@ -164,6 +164,39 @@ wildfly-postgresql:
         - postgresql:db
 
 
+### WildFly10
+
+wildfly10:
+    image: local/camunda-bpm-platform:wildfly10-SNAPSHOT
+    environment:
+        - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom
+    ports:
+        - "8080:8080"
+
+wildfly10-mysql:
+    extends:
+        service: wildfly10
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+wildfly10-postgresql:
+    extends:
+        service: wildfly10
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
 ### WildFly EE
 
 wildfly-ee:
@@ -186,6 +219,37 @@ wildfly-ee-mysql:
 wildfly-ee-postgresql:
     extends:
         service: wildfly-ee
+    environment:
+        - DB_DRIVER=org.postgresql.Driver
+        - DB_URL=jdbc:postgresql://db:5432/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:5432
+    links:
+        - postgresql:db
+
+### WildFly10 EE
+
+wildfly10-ee:
+    extends:
+        service: wildfly10
+    image: local/camunda-bpm-platform:wildfly10-SNAPSHOT-ee
+
+wildfly10-ee-mysql:
+    extends:
+        service: wildfly10-ee
+    environment:
+        - DB_DRIVER=com.mysql.jdbc.Driver
+        - DB_URL=jdbc:mysql://db:3306/process-engine
+        - DB_USERNAME=camunda
+        - DB_PASSWORD=camunda
+        - WAIT_FOR=db:3306
+    links:
+        - mysql:db
+
+wildfly10-ee-postgresql:
+    extends:
+        service: wildfly10-ee
     environment:
         - DB_DRIVER=org.postgresql.Driver
         - DB_URL=jdbc:postgresql://db:5432/process-engine

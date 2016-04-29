@@ -2,7 +2,7 @@
 
 set -e
 
-SERVERS=${1:-tomcat jboss wildfly glassfish}
+SERVERS=${1:-tomcat jboss wildfly wildfly10 glassfish}
 
 export COMPOSE_PROJECT_NAME=camunda
 export COMPOSE_FILE=./test/docker-compose.yml
