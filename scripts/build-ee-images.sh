@@ -19,7 +19,7 @@ function build {
 
     sed -i "/^#NEXUS_CREDENTIALS/a NEXUS_CREDENTIALS=\"-u ${USERNAME}:${PASSWORD}\"" ${server}/install-camunda.sh
 
-    docker build --build-arg REPOSITORY=private --build-arg ARTIFACT=camunda-bpm-ee-${server} -t ${image}:${tag} ${server} || clean_up
+    docker build $DOCKER_BUILD_FLAGS --build-arg REPOSITORY=private --build-arg ARTIFACT=camunda-bpm-ee-${server} -t ${image}:${tag} ${server} || clean_up
 
     clean_up
 }

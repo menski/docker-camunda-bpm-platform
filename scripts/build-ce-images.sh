@@ -9,7 +9,7 @@ function build {
     local image="local/camunda-bpm-platform"
     local tag=${server}-SNAPSHOT
 
-    docker build -t ${image}:${tag} ${server}
+    docker build $DOCKER_BUILD_FLAGS -t ${image}:${tag} ${server}
 }
 
 # build images
